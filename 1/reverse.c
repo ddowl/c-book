@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include <string.h>
 
 #define MAXLINE 1000
-#define CUTOFF_LEN 80
 
 // read a line into s, return length
 int getLine(char s[], int lim) {
@@ -32,15 +32,23 @@ int consumeLine(char s[], int lim) {
   return lineLen;
 }
 
-// print any line longer than the CUTOFF_LEN
+void reverse(char s[]) {
+  int len = strlen(s);
+  for (int i = 0; i < len / 2; ++i) {
+    char temp = s[i];
+    s[i] = s[len - i - 1];
+    s[len - i - 1] = temp;
+  }
+}
+
+// reverses each line of input
 int main() {
   int len = 0;            // current line length
   char line[MAXLINE];     // current input line
 
   while ((len = consumeLine(line, MAXLINE)) > 0) {
-    if (len > CUTOFF_LEN) {
-      printf("%s\n", line);
-    }
+    reverse(line);
+    printf("%s\n", line);
   }
   return 0;
 }

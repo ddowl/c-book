@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include <string.h>
 
 #define MAXLINE 1000
-#define CUTOFF_LEN 80
 
 // read a line into s, return length
 int getLine(char s[], int lim) {
@@ -32,15 +32,15 @@ int consumeLine(char s[], int lim) {
   return lineLen;
 }
 
-// print any line longer than the CUTOFF_LEN
+// checks a C program for rudimentary syntax errors like unblanced parentheses,
+// brackets, and braces. Don't forget about quotes, both single and double,
+// escape sequences, and comments
 int main() {
   int len = 0;            // current line length
   char line[MAXLINE];     // current input line
 
   while ((len = consumeLine(line, MAXLINE)) > 0) {
-    if (len > CUTOFF_LEN) {
-      printf("%s\n", line);
-    }
+
   }
   return 0;
 }

@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include <string.h>
 
 #define MAXLINE 1000
-#define CUTOFF_LEN 80
 
 // read a line into s, return length
 int getLine(char s[], int lim) {
@@ -32,15 +32,16 @@ int consumeLine(char s[], int lim) {
   return lineLen;
 }
 
-// print any line longer than the CUTOFF_LEN
+// folds long input lines into two or more shorter lines after the last
+// non-blank character that occurs before the nth column of input.
+// Make sure we do something intelligent with _very_ long lines, and if
+// there are no blanks or tabs before the specified column.
 int main() {
   int len = 0;            // current line length
   char line[MAXLINE];     // current input line
 
   while ((len = consumeLine(line, MAXLINE)) > 0) {
-    if (len > CUTOFF_LEN) {
-      printf("%s\n", line);
-    }
+
   }
   return 0;
 }

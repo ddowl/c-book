@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 #define MAXLINE 1000
-#define CUTOFF_LEN 80
 
 // read a line into s, return length
 int getLine(char s[], int lim) {
@@ -32,24 +31,21 @@ int consumeLine(char s[], int lim) {
   return lineLen;
 }
 
-// copy 'from' into 'to'; assume to is big enough
-void copy(char from[], char to[]) {
-  int i = 0;
-  while ((to[i] = from[i]) != '\0') { ++i; }
-}
-
-// print longest input line
+// remove trailing blanks and tabs from each
+// line of input. Delete blank lines
 int main() {
   int len = 0;            // current line length
   char line[MAXLINE];     // current input line
 
   while ((len = consumeLine(line, MAXLINE)) > 0) {
-    // find last non-whitespace character in line
-    int i = len;
-    while (line[i] == ' ' || line[i] == '\t') { --i; }
+    if (len > 1) {  // ignore empty lines
+      // find last non-whitespace character in line
+      int i = len - 2;
+      while (line[i] == ' ' || line[i] == '\t') { --i; }
 
-    // print up to that point
-    printf("%.*s\n", i, line);
+      // print up to that point
+      printf("%.*s\n", i+1, line);
+    }
   }
   return 0;
 }

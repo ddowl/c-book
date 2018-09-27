@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <string.h>
 
 #define MAXLINE 1000
-#define CUTOFF_LEN 80
+#define TAB_LEN 8
 
 // read a line into s, return length
 int getLine(char s[], int lim) {
@@ -32,15 +33,14 @@ int consumeLine(char s[], int lim) {
   return lineLen;
 }
 
-// print any line longer than the CUTOFF_LEN
+// replaces tabs in the input with the proper number of blanks to space
+// to the next tab stop. Assume a fixed set of tab stops, say every n columns
 int main() {
   int len = 0;            // current line length
   char line[MAXLINE];     // current input line
 
   while ((len = consumeLine(line, MAXLINE)) > 0) {
-    if (len > CUTOFF_LEN) {
-      printf("%s\n", line);
-    }
+
   }
   return 0;
 }
