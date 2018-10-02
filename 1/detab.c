@@ -40,7 +40,20 @@ int main() {
   char line[MAXLINE];     // current input line
 
   while ((len = consumeLine(line, MAXLINE)) > 0) {
+    int columnCount = 0;
+    for (int i = 0; i < len; i++) {
+      if (line[i] == '\t') {
+        int tabOffset = columnCount % TAB_LEN;
 
+        for (int j = 0; j < TAB_LEN - tabOffset; j++) {
+          putchar(' ');
+          columnCount++;
+        }
+      } else {
+        putchar(line[i]);
+        columnCount++;
+      }
+    }
   }
   return 0;
 }

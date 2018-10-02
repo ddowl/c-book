@@ -40,7 +40,28 @@ int main() {
   char line[MAXLINE];     // current input line
 
   while ((len = consumeLine(line, MAXLINE)) > 0) {
+    // strat: when we find a whitespace, figure out bounds of run in line
+    // use difference of upper and lower bounds to determine # tabs
+    // (upper - lower) / TAB_LEN = # of tabs
+    // (upper - lower) % TAB_LEN = # of whitespaces
+    for (int i = 0; i < len; i++) {
+      if (line[i] == ' ') {
+        int numBlanks = 1;
+        while (line[i + numBlanks] == ' ') { numBlanks++; }
 
+        for (int j = 0; j < numBlanks / TAB_LEN; j++) {
+          putchar('\t');
+        }
+
+        for (int j = 0; j < numBlanks % TAB_LEN; j++) {
+          putchar(' ');
+        }
+
+        i += numBlanks - 1;
+      } else {
+        putchar(line[i]);
+      }
+    }
   }
   return 0;
 }
