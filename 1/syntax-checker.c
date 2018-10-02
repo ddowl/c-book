@@ -32,9 +32,12 @@ int consumeLine(char s[], int lim) {
   return lineLen;
 }
 
-// checks a C program for rudimentary syntax errors like unblanced parentheses,
+// checks a C program for rudimentary syntax errors like unbalanced parentheses,
 // brackets, and braces. Don't forget about quotes, both single and double,
-// escape sequences, and comments
+// escape sequences, and comments.
+//
+// NOTE: The fuck. This is a harder program, especially in C.
+// I'll come back to this one later hopefully.
 int main() {
   int len = 0;            // current line length
   char line[MAXLINE];     // current input line
