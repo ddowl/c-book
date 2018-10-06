@@ -4,10 +4,17 @@
   versa), leaving the others unchanged
 */
 
-int invert(int x, int p, int n) {
+#include <stdio.h>
 
+int invert(unsigned x, int p, int n) {
+  int mask = ~(~0 << n) << (p - n + 1);
+  return x ^ mask;
 }
 
 int main() {
-  
+  unsigned x = 0xd;
+  int p = 2;
+  int n = 2;
+  unsigned k = invert(x, p, n);
+  printf("invert(0x%x, %d, %d) = 0x%x\n", x, p, n, k);
 }
