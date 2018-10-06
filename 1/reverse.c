@@ -41,14 +41,18 @@ void reverse(char s[]) {
   }
 }
 
-// reverses each line of input
-int main() {
-  int len = 0;            // current line length
-  char line[MAXLINE];     // current input line
+// NOTE: currently commented as some itoa functions in the 
+// Ch3 exercises rely on the reverse function, but we haven't
+// been introduced to header files / im too lazy to link.
 
-  while ((len = consumeLine(line, MAXLINE)) > 0) {
-    reverse(line);
-    printf("%s\n", line);
-  }
-  return 0;
-}
+// reverses each line of input
+// int main() {
+//   int len = 0;            // current line length
+//   char line[MAXLINE];     // current input line
+
+//   while ((len = consumeLine(line, MAXLINE)) > 0) {
+//     reverse(line);
+//     printf("%s\n", line);
+//   }
+//   return 0;
+// }
