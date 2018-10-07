@@ -20,10 +20,6 @@ void paddedItoa(int n, char s[], int minWidth) {
     s[i++] = n % 10 + '0';
   } while ((n /= 10) > 0);
 
-  while (i < minWidth) {
-    s[i++] = '0';
-  }
-
   if (sign < 0) {
     s[i++] = '-';
   }
